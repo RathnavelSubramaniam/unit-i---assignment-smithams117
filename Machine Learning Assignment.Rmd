@@ -1,0 +1,109 @@
+---
+title: "Machine Learning Assignment"
+output: html_document
+date: 23-08-2022
+---
+
+```{r}
+library(ISLR)
+```
+
+1.	This exercise involves the Auto data set studied in the lab. Make sure that the missing values have been removed from the data.
+
+ (a) Which of the predictors are quantitative, and which are qualitative?
+ 
+```{r}
+Auto
+```
+
+```{r}
+str(Auto)
+```
+
+ 
+(b) What is the range of each quantitative predictor? You can answer this using the range() function.
+
+```{r}
+summary(Auto[, -c( 9)])
+```
+
+(c) What is the mean and standard deviation of each quantitative predictor? 
+
+```{r}
+sapply(Auto[, -c( 9)], mean)
+```
+```{r}
+sapply(Auto[, -c( 9)], sd)
+```
+
+(d)	 Now remove the 10th through 85th observations. What is the range, mean, and standard deviation of each predictor in the subset of the data that remains? 
+
+```{r}
+ran <- Auto[-c(10:85), -c(9)]
+sapply(ran, range)
+```
+
+```{r}
+avg <- Auto[-c(10:85), -c(9)]
+sapply(avg, range)
+```
+
+```{r}
+sd <- Auto[-c(10:85), -c(9)]
+sapply(sd, range)
+```
+
+```{r}
+sapply(ran, mean)
+
+```
+```{r}
+sapply(ran, sd)
+
+```
+
+
+(e)	Using the full data set, investigate the predictors graphically, using scatter plots or other tools of your choice. Create some plots highlighting the relationships among the predictors. Comment on your findings.
+
+```{r}
+pairs(Auto)
+```
+
+(f) Suppose that we wish to predict gas mileage (mpg) on the basis of the other variables. Do your plots suggest that any of the other variables might be useful in predicting mpg? Justify your answer.
+
+```{r}
+
+cor(Auto$weight, Auto$horsepower)
+
+```
+
+```{r}
+
+cor(Auto$weight, Auto$displacement)
+
+```
+
+```{r}
+
+cor(Auto$displacement, Auto$horsepower)
+
+```
+
+```{r}
+
+cor(Auto$cylinders, Auto$horsepower)
+
+```
+
+```{r}
+
+cor(Auto$cylinders, Auto$displacement)
+
+```
+
+```{r}
+
+cor(Auto$cylinders, Auto$weight)
+
+```
+
